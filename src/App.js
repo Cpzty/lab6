@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
+import Router from './Router';
+import {NavLink} from 'react-router-dom';
 
-import './App.css';
+
+const Navigation = (props)=> <nav>
+      <ul>
+      <li>
+      <NavLink to='/'>Home</NavLink>
+      </li>
+      <li>
+      <NavLink to='/cart'>Cart</NavLink>
+      </li>
+      </ul>
+      </nav>
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    return <div className="page-container">
+    <Navigation />  
+    <Router />
+    </div>
   }
 }
 
