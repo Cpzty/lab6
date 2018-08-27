@@ -1,18 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 let grandtotal=0;
+
 function sort(items){
   return items.sort((a,b)=> a.id<b.id)
 }
 
 function Cart(props){
   
-  return <table>
+  return <div><table>
     <thead>
     <tr>
     <th>Item</th>
     <th>Quantity</th>
     <th>Total</th>
+    <th>Order Total</th>
     <th></th>
     <th></th>
     </tr>
@@ -23,6 +25,7 @@ function Cart(props){
         <td>{item.name}</td>
         <td>{item.quantity}</td>
         <td>{item.quantity*item.price}</td>
+        <td>{grandtotal=grandtotal+item.price}</td>
         <td>
         <button onClick={()=>props.addToCart(item)}>+</button>
         </td>
@@ -33,9 +36,13 @@ function Cart(props){
           <button onClick={()=>props.removeAllFromCart(item)}>Remove all from cart</button>  
         </td>
         </tr>)
+          
       }
     </tbody>
   </table>
+    <h1>Order total</h1>
+    <p>{grandtotal}</p>
+    </div>
 }
 
 function mapStateToProps(state){
